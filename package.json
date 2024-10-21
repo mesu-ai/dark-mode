@@ -2,7 +2,7 @@
   "name": "next-theme",
   "version": "1.0.0",
   "type": "module",
-  "description": "A simple, customizable JavaScript library for toggling dark mode on your website. Easily integrate dark mode functionality into your web projects with a single line of code.",
+  "description": "next-theme is a simple and flexible theme switcher for React and Next.js. It enables seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage. Easily integrate it into any Next.js project for efficient theme management.",
   "main": "index.js",
   "scripts": {
     "build:dev": "rollup -c --environment NODE_ENV:development",
@@ -10,11 +10,18 @@
   },
   "keywords": [
     "next-theme",
+    "react",
+    "next.js",
+    "theme",
+    "theme-switcher",
     "dark-mode",
-    "react-theme",
-    "next-theme",
-    "npm"
+    "light-mode",
+    "theme-toggle",
+    "dark-theme",
+    "light-theme",
+    "react-theme"
   ],
+  
   "author": "Mesu",
   "license": "MIT",
   "dependencies": {

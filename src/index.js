@@ -1,4 +1,3 @@
-import useTheme from "./hooks/useTheme";
+import ThemeProvider, {useTheme} from './context/ThemeContext';
 
-export {useTheme};
-
+export {ThemeProvider, useTheme}
