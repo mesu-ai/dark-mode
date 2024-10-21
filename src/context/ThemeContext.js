@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
-export const useTheme = useContext(ThemeContext);
+export const useTheme = () => useContext(ThemeContext);
 
 const themes = { light: 'light', dark: 'dark' }
 
@@ -9,7 +9,7 @@ const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(themes.light);
 
 
-  const getInitailTheme = () => {
+  const getInitialTheme = () => {
     const storedTheme = window.localStorage.getItem('theme');
     if (storedTheme) return storedTheme;
 
@@ -27,7 +27,7 @@ const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const initialTheme = getInitailTheme();
+      const initialTheme = getInitialTheme();
       setTheme(initialTheme);
       document.documentElement.setAttribute('data-theme', initialTheme);
       localStorage.setItem('theme', initialTheme);
@@ -37,8 +37,8 @@ const ThemeProvider = ({ children }) => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
-    </ThemeContext.Provider >
-  )
+    </ThemeContext.Provider>
+  );
 }
 
 export default ThemeProvider
