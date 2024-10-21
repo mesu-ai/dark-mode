@@ -1,22 +1,28 @@
 {
-  "name": "dark-mode",
+  "name": "next-theme",
   "version": "1.0.0",
+  "type": "module",
   "description": "A simple, customizable JavaScript library for toggling dark mode on your website. Easily integrate dark mode functionality into your web projects with a single line of code.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "rollup -c --environment NODE_ENV:development",
+    "build": "rollup -c --environment NODE_ENV:production"
   },
   "keywords": [
-    "dark",
-    "mode",
-    "npm",
+    "next-theme",
     "dark-mode",
-    "react-dark-mode",
-    "npm",
-    "package",
-    "theme",
+    "react-theme",
+    "next-theme",
     "npm"
   ],
   "author": "Mesu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "rollup": "^4.24.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }
