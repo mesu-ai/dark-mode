@@ -1,0 +1,22 @@
+{
+  "name": "dark-mode",
+  "version": "1.0.0",
+  "description": "A simple, customizable JavaScript library for toggling dark mode on your website. Easily integrate dark mode functionality into your web projects with a single line of code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dark",
+    "mode",
+    "npm",
+    "dark-mode",
+    "react-dark-mode",
+    "npm",
+    "package",
+    "theme",
+    "npm"
+  ],
+  "author": "Mesu",
+  "license": "MIT"
+}
