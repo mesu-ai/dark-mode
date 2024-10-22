@@ -1,9 +1,9 @@
-Here’s a copy-paste-ready **README.md** file for your `next-theme` package:
+Here's an updated **README.md** file with the new package name, `react-next-theme`, and ready for users to copy-paste the code snippets and installation instructions:
 
 ```markdown
-# next-theme
+# react-next-theme
 
-`next-theme` is a simple and flexible theme switcher for React and Next.js. It allows for seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage.
+`react-next-theme` is a simple and flexible theme switcher for React and Next.js. It allows for seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage.
 
 ## Features
 
@@ -14,16 +14,16 @@ Here’s a copy-paste-ready **README.md** file for your `next-theme` package:
 
 ## Installation
 
-You can install the `next-theme` package using npm or yarn:
+You can install the `react-next-theme` package using npm or yarn:
 
 ```bash
-npm install next-theme
+npm install react-next-theme
 ```
 
 or
 
 ```bash
-yarn add next-theme
+yarn add react-next-theme
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ To use the package in a React application, follow these steps:
    import ReactDOM from 'react-dom/client';
    import App from './App';
    import './index.css'; // Import your global CSS
-   import { ThemeProvider } from 'next-theme';
+   import { ThemeProvider } from 'react-next-theme';
 
    ReactDOM.createRoot(document.getElementById('root')).render(
      <React.StrictMode>
@@ -60,7 +60,7 @@ To use the package in a React application, follow these steps:
    ```jsx
    // src/App.jsx
    import React from 'react';
-   import { useTheme } from 'next-theme';
+   import { useTheme } from 'react-next-theme';
 
    const App = () => {
      const { theme, toggleTheme } = useTheme();
@@ -112,7 +112,7 @@ To use the package in a React application, follow these steps:
 
 ### Next.js
 
-`next-theme` works seamlessly with both the **App Router** and **Pages Router** in Next.js.
+`react-next-theme` works seamlessly with both the **App Router** and **Pages Router** in Next.js.
 
 #### Next.js (App Router)
 
@@ -123,7 +123,7 @@ To use the package in a React application, follow these steps:
    ```jsx
    // app/layout.js
    import './globals.css'; // Import global CSS
-   import { ThemeProvider } from 'next-theme';
+   import { ThemeProvider } from 'react-next-theme';
 
    export default function RootLayout({ children }) {
      return (
@@ -142,7 +142,7 @@ To use the package in a React application, follow these steps:
 
    ```jsx
    // app/page.js
-   import { useTheme } from 'next-theme';
+   import { useTheme } from 'react-next-theme';
 
    export default function HomePage() {
      const { theme, toggleTheme } = useTheme();
@@ -198,7 +198,7 @@ To use the package in a React application, follow these steps:
    ```jsx
    // pages/_app.js
    import '../styles/globals.css';
-   import { ThemeProvider } from 'next-theme';
+   import { ThemeProvider } from 'react-next-theme';
 
    export default function MyApp({ Component, pageProps }) {
      return (
@@ -215,7 +215,7 @@ To use the package in a React application, follow these steps:
 
    ```jsx
    // pages/index.js
-   import { useTheme } from 'next-theme';
+   import { useTheme } from 'react-next-theme';
 
    export default function Home() {
      const { theme, toggleTheme } = useTheme();
@@ -264,24 +264,15 @@ To use the package in a React application, follow these steps:
 
 ## Local Storage Support
 
-The `next-theme` package automatically stores the user's theme preference in `localStorage` and loads it on page reload. This ensures a consistent experience across sessions.
+The `react-next-theme` package automatically stores the user's theme preference in `localStorage` and loads it on page reload. This ensures a consistent experience across sessions.
 
 ## System Preferences Detection
 
-`next-theme` also detects the user's system-level theme preference (light or dark) using the `prefers-color-scheme` media query and applies it as the default theme if no preference is stored in `localStorage`.
+`react-next-theme` also detects the user's system-level theme preference (light or dark) using the `prefers-color-scheme` media query and applies it as the default theme if no preference is stored in `localStorage`.
 
 ---
 
 ## License
 
-`next-theme` is licensed under the [MIT License](LICENSE).
-
+`react-next-theme` is licensed under the [MIT License](LICENSE).
 ```
-
-### Instructions:
-
-1. Copy the above markdown.
-2. Paste it directly into your `README.md` file for your `next-theme` package.
-3. Adjust any content like `LICENSE` links or more specific examples if needed.
-
-Let me know if you need any adjustments or additional content for the README!
