@@ -11,11 +11,12 @@ export default [
       file: "dist/index.js",
       format: "es",
       sourcemap: devMode ? 'inline' : false,
-      
     },
+    
+    external: ['react', 'react-dom'],
     plugins: [
       babel({
-        exclude: 'node_modules/**',
+        exclude: 'node_modules/**', 
         babelHelpers: 'bundled',
         presets: [
           "@babel/preset-react",
@@ -33,11 +34,10 @@ export default [
           drop_console: !devMode,
           drop_debugger: !devMode,
         },
-        output:{
+        output: {
           quote_style: 1,
         }
       })
-
     ]
   }
-]
+];
