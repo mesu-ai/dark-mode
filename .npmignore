@@ -1,10 +1,29 @@
-rollup.config.js
-src/
+# Ignore unnecessary folders
 node_modules/
+src/
+.vscode/
+.idea/
+test/
+__tests__/
+
+# Ignore build configuration files
+rollup.config.js
+webpack.config.js
+tsconfig.json
+babel.config.json
+.eslintrc.js
+
+# Ignore Git-specific files
+.git
+.gitignore
+
+# Ignore package manager lock files
 package-lock.json
 yarn.lock
-*.log
+
+# Ignore environment files
 .env
+.env.local
 
-
-react-next-theme*.tgz
+# Ignore log files
+*.log
