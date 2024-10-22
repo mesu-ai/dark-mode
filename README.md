@@ -1,6 +1,3 @@
-Here's an updated **README.md** file with the new package name, `react-next-theme`, and ready for users to copy-paste the code snippets and installation instructions:
-
-```markdown
 # react-next-theme
 
 `react-next-theme` is a simple and flexible theme switcher for React and Next.js. It allows for seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage.
@@ -276,3 +273,4 @@ The `react-next-theme` package automatically stores the user's theme preference 
 
 `react-next-theme` is licensed under the [MIT License](LICENSE).
 ```
+
