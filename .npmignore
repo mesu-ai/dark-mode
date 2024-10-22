@@ -1,2 +1,5 @@
-src
 rollup.config.js
+src/
+node_modules/
+package-lock.json
+yarn.lock
