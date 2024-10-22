@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "next-theme is a simple and flexible theme switcher for React and Next.js. It enables seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage. Easily integrate it into any Next.js project for efficient theme management.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build:dev": "rollup -c --environment NODE_ENV:development",
     "build": "rollup -c --environment NODE_ENV:production"
