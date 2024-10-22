@@ -1,8 +1,8 @@
 {
-  "name": "next-theme",
+  "name": "react-next-theme",
   "version": "1.0.0",
   "type": "module",
-  "description": "next-theme is a simple and flexible theme switcher for React and Next.js. It enables seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage. Easily integrate it into any Next.js project for efficient theme management.",
+  "description": "npm react-next-theme is a simple and flexible theme switcher for React and Next.js. It enables seamless toggling between light and dark modes, supports user preferences, and stores the selected theme in local storage. Easily integrate it into any Next.js project for efficient theme management.",
   "main": "dist/index.js",
   "scripts": {
     "build:dev": "rollup -c --environment NODE_ENV:development",
@@ -10,6 +10,7 @@
   },
   "keywords": [
     "next-theme",
+    "react-next-theme",
     "react",
     "next.js",
     "theme",
@@ -24,10 +25,10 @@
   "author": "Mesu",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mesu-ai/next-theme"
+    "url": "git+https://github.com/mesu-ai/react-next-theme.git"
   },
   "bugs": {
-    "url": "https://github.com/mesu-ai/next-theme/issues"
+    "url": "https://github.com/mesu-ai/react-next-theme/issues"
   },
   "license": "MIT",
   "dependencies": {
