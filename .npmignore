@@ -3,7 +3,6 @@ node_modules/
 
 # Ignore source files (src folder)
 src/
-# scripts/  # Exclude scripts folder, including themeScript.js
 
 # Ignore IDE/editor-specific settings
 .vscode/
@@ -45,7 +44,3 @@ coverage/
 
 # Ignore tarballs
 *.tgz
-
-# Public folder (exclude everything except the necessary theme script)
-public/
-!public/react-next-theme-script.js  # Include only the minified theme script

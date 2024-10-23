@@ -3,7 +3,6 @@ node_modules/
 
 # Ignore distribution and build files
 dist/
-public/react-next-theme-script.js  # Ignore the generated theme script, it will be copied post-install
 
 # Ignore lock files (choose one depending on whether you're using npm or yarn)
 package-lock.json
