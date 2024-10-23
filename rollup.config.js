@@ -2,7 +2,6 @@ import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 
 const devMode = process.env.NODE_ENV === 'development';
-console.log('devMode', devMode);
 
 export default [
   {
