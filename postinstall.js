@@ -1,21 +1,26 @@
-// postinstall.js
+// postinstall.js (updated for ES module syntax)
 
-const fs = require('fs');
-const path = require('path');
+import { existsSync, mkdirSync, copyFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+// Helper to get __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Source path: The themeScript.js file in the npm package
-const scriptSrcPath = path.join(__dirname, 'scripts', 'themeScript.js');
+const scriptSrcPath = join(__dirname, 'scripts', 'themeScript.js');
 
 // Destination path: The user's public directory
-const publicDir = path.join(process.cwd(), 'public');
-const publicScriptPath = path.join(publicDir, 'react-next-theme-script.js');
+const publicDir = join(process.cwd(), 'public');
+const publicScriptPath = join(publicDir, 'react-next-theme-script.js');
 
 // Create the public directory if it doesn't exist
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir, { recursive: true });
+if (!existsSync(publicDir)) {
+  mkdirSync(publicDir, { recursive: true });
 }
 
 // Copy the script to the public folder
-fs.copyFileSync(scriptSrcPath, publicScriptPath);
+copyFileSync(scriptSrcPath, publicScriptPath);
 
 console.log('themeScript.js copied to public/react-next-theme-script.js');
