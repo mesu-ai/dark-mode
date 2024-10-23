@@ -3,7 +3,7 @@ node_modules/
 
 # Ignore source files (src folder)
 src/
-scripts/
+scripts/  # Exclude scripts folder, including themeScript.js
 
 # Ignore IDE/editor-specific settings
 .vscode/
@@ -15,7 +15,9 @@ __tests__/
 
 # Ignore build configuration files
 rollup.config.js
-postinstall.js
+postinstall.js  # Exclude postinstall.js from being published
+
+# Ignore other config files
 webpack.config.js
 tsconfig.json
 babel.config.json
@@ -25,7 +27,7 @@ babel.config.json
 .git/
 .gitignore
 
-# Ignore package manager lock files (choose one depending on package manager)
+# Ignore package manager lock files (depending on package manager)
 package-lock.json
 yarn.lock
 
@@ -46,4 +48,4 @@ coverage/
 
 # Public folder (exclude everything except the necessary theme script)
 public/
-!public/react-next-theme-script.js  # Include only the generated theme script
+!public/react-next-theme-script.js  # Include only the minified theme script
