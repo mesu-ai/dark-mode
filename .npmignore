@@ -1,8 +1,9 @@
-# Ignore node_modules folder (this is installed by the user)
+# Ignore node_modules from the npm package
 node_modules/
 
-# Ignore source files (if distributing only built files)
+# Ignore source files (src folder)
 src/
+utils/
 
 # Ignore IDE/editor-specific settings
 .vscode/
@@ -20,7 +21,7 @@ tsconfig.json
 babel.config.json
 .eslintrc.js
 
-# Ignore Git-related files
+# Ignore Git-specific files
 .git/
 .gitignore
 

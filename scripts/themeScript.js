@@ -1,9 +1,3 @@
-(function () {
-  const storedTheme = localStorage.getItem('theme');
-  if (storedTheme) {
-    document.documentElecment.setAttribute('data-theme', storedTheme);
-  } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-  }
-})()
+import { applyTheme } from "../utils/theme";
+
+applyTheme();
