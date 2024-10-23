@@ -1,17 +1,18 @@
 {
   "name": "react-next-theme",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "A simple and flexible theme switcher for React and Next.js, supporting light and dark modes with localStorage and system preferences.",
   "main": "dist/index.js",
   "scripts": {
     "build:dev": "rollup -c --environment NODE_ENV:development",
-    "build": "rollup -c --environment NODE_ENV:production",
+    "build": "rollup -c --environment NODE_ENV:production && yarn run minify-theme-script",
+    "minify-theme-script": "terser scripts/themeScript.js -o public/react-next-theme-script.js --compress --mangle",
     "postinstall": "node postinstall.js" 
   },
   "files": [
     "dist",
-    "scripts/themeScript.js"
+    "public/react-next-theme-script.js"
   ],
   "keywords": [
     "react-next-theme",

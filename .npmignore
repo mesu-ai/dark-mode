@@ -3,7 +3,7 @@ node_modules/
 
 # Ignore source files (src folder)
 src/
-utils/
+scripts/
 
 # Ignore IDE/editor-specific settings
 .vscode/
