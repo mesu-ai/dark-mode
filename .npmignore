@@ -3,7 +3,7 @@ node_modules/
 
 # Ignore source files (src folder)
 src/
-scripts/  # Exclude scripts folder, including themeScript.js
+# scripts/  # Exclude scripts folder, including themeScript.js
 
 # Ignore IDE/editor-specific settings
 .vscode/
@@ -15,7 +15,7 @@ __tests__/
 
 # Ignore build configuration files
 rollup.config.js
-postinstall.js  # Exclude postinstall.js from being published
+# postinstall.js  # Exclude postinstall.js from being published
 
 # Ignore other config files
 webpack.config.js
