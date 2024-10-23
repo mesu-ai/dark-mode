@@ -6,11 +6,10 @@ export const useTheme = () => useContext(ThemeContext);
 const themes = { light: 'light', dark: 'dark' }
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(()=>{
-    if(typeof window !== 'undefined'){
-      return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? themes.dark : themes.light);
-    }
-    return themes.light;
+
+  const [theme, setTheme] = useState(() => {
+    return (typeof window !== 'undefined' && localStorage.getItem('theme')) ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? themes.dark : themes.light);
   });
 
   const toggleTheme = () => {

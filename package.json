@@ -7,14 +7,11 @@
   "scripts": {
     "build:dev": "rollup -c --environment NODE_ENV:development",
     "build": "rollup -c --environment NODE_ENV:production && yarn run minify-theme-script",
-    "minify-theme-script": "terser scripts/themeScript.js -o public/react-next-theme-script.js --compress --mangle",
-    "postinstall": "node postinstall.js" 
+    "minify-theme-script": "terser scripts/themeScript.js -o public/react-next-theme-script.js --compress --mangle"
   },
   "files": [
     "dist",
-    "postinstall.js",
-    "scripts/themeScript.js",
-    "public/react-next-theme-script.js"
+    "scripts/themeScript.js"
   ],
   "keywords": [
     "react-next-theme",
