@@ -1,173 +1,44 @@
+Sure! Here's the complete **`README.md`** file, including instructions for both **npm** and **yarn**, detailed usage for **React**, **Next.js (Pages Router and App Router)**, and the **CSS** you provided.
+
+---
+
 # react-next-theme
 
-**`react-next-theme`** is a simple and flexible theme switcher for React and Next.js applications, supporting both light and dark modes with seamless theme toggling. It also provides a solution for preventing flickering during page loads by automatically applying the user’s theme preference from `localStorage` or system settings.
+`react-next-theme` is a simple and flexible theme switcher for React and Next.js applications, supporting light and dark modes. It provides a seamless solution for managing themes across your applications with automatic theme detection based on system preferences and local storage.
 
 ## Features
 
-- Seamless light/dark mode switching.
-- Works with **React** and **Next.js** (both App Router and Page Router).
-- Automatically applies the preferred theme on page load.
-- Uses a lightweight theme script for fast initial theme application to avoid flickering.
-- Theme preferences are persisted in `localStorage`.
+- Supports **light** and **dark** modes.
+- Automatically respects system preferences for dark mode.
+- Easy to integrate in **React** and **Next.js** applications (both **App Router** and **Pages Router**).
+- Prevents the white flash on page load by applying the correct theme immediately.
+- Customizable and extendable for your project needs.
 
 ## Installation
 
-You can install `react-next-theme` via **npm** or **yarn**:
+You can install the package via **npm** or **yarn**.
 
-### Using npm:
+### Using npm
 
 ```bash
 npm install react-next-theme
 ```
 
-### Using yarn:
+### Using yarn
 
 ```bash
 yarn add react-next-theme
 ```
 
-After installation, a script (`react-next-theme-script.js`) will be automatically copied to your **public** folder. This script applies the initial theme before React renders to avoid flickering.
+---
 
-## Usage
+## Basic Setup
 
-### 1. Next.js (App Router or Page Router)
+### 1. Add Theme-Specific CSS Variables
 
-#### **App Router (`app/layout.js`)**
-
-To use `react-next-theme` in the **Next.js App Router**, follow these steps:
-
-1. Import the theme script using the Next.js `<Script>` component in your **`app/layout.js`**:
-
-```js
-import Script from 'next/script';
-import { ThemeProvider } from 'react-next-theme';
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head>
-        {/* Load the theme script before React hydrates the page */}
-        <Script src="/react-next-theme-script.js" strategy="beforeInteractive" />
-      </head>
-      <body>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
-  );
-}
-```
-
-2. Use the `ThemeProvider` to wrap your application components to enable theme toggling.
-
-#### **Page Router (`pages/_document.js`)**
-
-To use it in **Next.js Page Router**, include the theme script in **`pages/_document.js`**:
-
-```js
-import { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
-
-export default function Document() {
-  return (
-    <Html>
-      <Head>
-        {/* Load the theme script */}
-        <Script src="/react-next-theme-script.js" strategy="beforeInteractive" />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
-}
-```
-
-You can then use the `ThemeProvider` in **`pages/_app.js`** to wrap your application:
-
-```js
-import { ThemeProvider } from 'react-next-theme';
-import '../styles/globals.css';
-
-function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
-}
-
-export default MyApp;
-```
-
-### 2. React (Create React App)
-
-In **React projects**, you need to include the theme script in your **`public/index.html`** file:
-
-```html
-<!-- public/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React App</title>
-    
-    <!-- Load the theme script to apply the theme before the app renders -->
-    <script src="%PUBLIC_URL%/react-next-theme-script.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
-```
-
-Then, wrap your app with the `ThemeProvider` in **`src/index.js`**:
-
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { ThemeProvider } from 'react-next-theme';
-
-ReactDOM.render(
-  <ThemeProvider>
-    <App />
-  </ThemeProvider>,
-  document.getElementById('root')
-);
-```
-
-### 3. Toggling Theme in Your Application
-
-The `useTheme` hook allows you to toggle between light and dark modes. Here’s an example of how to use it:
-
-```js
-import React from 'react';
-import { useTheme } from 'react-next-theme';
-
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-
-  return (
-    <button onClick={toggleTheme}>
-      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-    </button>
-  );
-}
-
-export default ThemeToggle;
-```
-
-### 4. Customizing the Theme
-
-The theme is applied using a `data-theme` attribute on the `<html>` element. You can define your own custom CSS styles for light and dark modes in your stylesheets:
+To ensure the theme is correctly applied to your application, include the following CSS in your global styles (`index.css` or `globals.css` depending on your setup):
 
 ```css
-/* Default light theme */
 :root {
   --background-color: white;
   --text-color: black;
@@ -185,32 +56,256 @@ body {
 }
 ```
 
-### 5. How the Theme Script Works
+This CSS sets the background and text colors based on the `data-theme` attribute applied to the `<html>` element.
 
-The `react-next-theme-script.js` file is a small JavaScript file that runs before the app loads, ensuring that the theme is set early. It checks the `localStorage` for the user's theme preference or falls back to the system's preferred color scheme:
+---
+
+## Usage in **React** (Create React App or Vite)
+
+### 1. Inject Theme Initialization Script and Style
+
+To prevent a white flash on page load, you need to inject a script that applies the correct theme before React mounts. Modify your **`public/index.html`** or **`index.html`** file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+
+    <!-- Insert the theme initialization style of the avobe style -->
+
+    <!-- <link rel="stylesheet" href="example of index.css"> -->
+
+    <!-- Insert the theme initialization script -->
+    <script>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+```
+
+### 2. Use `ThemeProvider` in `src/index.js`
+
+Wrap your app with the `ThemeProvider` to handle dynamic theme switching:
 
 ```js
-(function () {
+// src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ThemeProvider } from 'react-next-theme';
+
+ReactDOM.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>,
+  document.getElementById('root')
+);
+```
+
+### 3. Use the `useTheme` Hook in Your Components
+
+```js
+// src/App.js
+import React from 'react';
+import { useTheme } from 'react-next-theme';
+
+function App() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div>
+      <h1>{theme === 'light' ? 'Light Mode' : 'Dark Mode'}</h1>
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      </button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+## Usage in **Next.js (Pages Router)**
+
+### 1. Inject Theme Script in `_document.js`
+
+To prevent the white flash, you need to inject the theme initialization script using Next.js' `_document.js` file:
+
+```js
+// pages/_document.js
+import { Html, Head, Main, NextScript } from 'next/document';
+import { getThemeScript } from 'react-next-theme';
+
+export default function Document() {
+  return (
+    <Html>
+      <Head>
+        {/* Inject the theme initialization script */}
+        <script dangerouslySetInnerHTML={{ __html: getThemeScript() }} />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+### 2. Wrap Your App with `ThemeProvider` in `_app.js`
+
+```js
+// pages/_app.js
+import { ThemeProvider } from 'react-next-theme';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
+
+export default MyApp;
+```
+
+### 3. Use `useTheme` Hook in Components
+
+```js
+// components/Header.js
+import { useTheme } from 'react-next-theme';
+
+function Header() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <header>
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      </button>
+    </header>
+  );
+}
+
+export default Header;
+```
+
+---
+
+## Usage in **Next.js (App Router)**
+
+### 1. Inject Theme Script in `layout.js`
+
+For **Next.js 13** (App Router), modify the **`app/layout.js`** file to inject the theme initialization script:
+
+```js
+// app/layout.js
+import { getThemeScript } from 'react-next-theme';
+
+export const metadata = {
+  title: 'My App',
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        {/* Inject the theme initialization script */}
+        <script dangerouslySetInnerHTML={{ __html: getThemeScript() }} />
+      </head>
+      <body>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+### 2. Wrap the App with `ThemeProvider`
+
+In **Next.js (App Router)**, wrap your entire app with the `ThemeProvider`:
+
+```js
+// app/layout.js
+import { ThemeProvider } from 'react-next-theme';
+
+export default function RootLayout({ children }) {
+  return (
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+### 3. Use `useTheme` Hook in Components
+
+```js
+// components/Header.js
+import { useTheme } from 'react-next-theme';
+
+function Header() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <header>
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      </button>
+    </header>
+  );
+}
+
+export default Header;
+```
+
+---
+
+## Using a Script File Instead of Inlining the Script
+
+If you prefer to use an external script file, you can place the theme initialization script inside the **`public/`** folder and reference it using the `<Script>` component in Next.js:
+
+### 1. Create `public/react-next-theme-script.js`:
+
+```js
+// public/react-next-theme-script.js
+(function() {
   const storedTheme = localStorage.getItem('theme');
-  if (storedTheme) {
-    document.documentElement.setAttribute('data-theme', storedTheme);
-  } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-  }
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
 })();
 ```
 
-### 6. Example Usage
+### 2. Reference It in `_document.js` or `layout.js`
 
-Here’s an example of how you can use `react-next-theme` in your Next.js or React app to create a smooth theme-switching experience without flickering:
+```js
+import Script from 'next/script';
 
-1. Add the script to your project (Next.js or React).
-2. Use the `ThemeProvider` to manage theme state.
-3. Use the `useTheme` hook to toggle the theme.
+<Script src="/react-next-theme-script.js" strategy="beforeInteractive" />
+```
+
+This will load the theme initialization script from the `public/` directory.
+
+---
 
 ## License
 
-This project is licensed under the **MIT License**.
+MIT License
+
+Feel free to modify or contribute to the project. Happy coding!
 
 ---
