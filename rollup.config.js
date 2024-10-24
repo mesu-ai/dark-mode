@@ -7,8 +7,8 @@ export default [
   {
     input: "src/index.js",
     output: {
-      file: "dist/index.js",
-      format: "es",
+      file: 'dist/index.esm.js',
+      format: 'es', // ESM format
       sourcemap: devMode ? 'inline' : false,
     },
     

@@ -6,12 +6,10 @@
   "main": "dist/index.js",
   "scripts": {
     "build:dev": "rollup -c --environment NODE_ENV:development",
-    "build": "rollup -c --environment NODE_ENV:production && yarn run minify-theme-script",
-    "minify-theme-script": "terser scripts/themeScript.js -o public/react-next-theme-script.js --compress --mangle"
+    "build": "rollup -c --environment NODE_ENV:production"
   },
   "files": [
-    "dist",
-    "scripts/themeScript.js"
+    "dist"
   ],
   "keywords": [
     "react-next-theme",
