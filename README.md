@@ -1,6 +1,4 @@
 
----
-
 # react-next-theme
 
 `react-next-theme` is a lightweight, customizable theme switcher for React and Next.js applications, supporting light and dark modes. It detects system preferences, applies the theme instantly, and prevents a white flash on page load.
@@ -323,14 +321,16 @@ export default Header;
 ```
 ---
 
-## Recommendation
-For simplicity and a clean setup, using getThemeScript is often the best choice, especially for projects where ease of integration and minimal file management are priorities. It’s also ideal for teams that prefer not to have extra files in public or are working on smaller projects.
+### **Recommendation**
+For simplicity and a clean setup, **using `getThemeScript` is often the best choice**, especially for projects where ease of integration and minimal file management are priorities. It’s also ideal for teams that prefer not to have extra files in `public` or are working on smaller projects.
 
-However, for larger projects or production-level apps where caching and modularity are important, using public/theme-script.js can improve load times slightly and centralize your theme logic.
+However, for **larger projects or production-level apps** where caching and modularity are important, **using `public/theme-script.js`** can improve load times slightly and centralize your theme logic. 
 
 In summary:
-Smaller projects or simpler setups → getThemeScript
-Larger projects or production-focused apps → public/theme-script.js
+- **Smaller projects or simpler setups** → `getThemeScript`
+- **Larger projects or production-focused apps** → `public/theme-script.js`
+
+Let me know if you’d like further customization in setup based on these considerations!
 
 
 ### Using a Script File Instead of Inlining the Script
