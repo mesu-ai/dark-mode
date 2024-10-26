@@ -1,0 +1,39 @@
+name: CI/CD for react-next-theme
+
+on:
+  push:
+    branches:
+      - main  # Triggers the workflow when changes are pushed to the main branch
+  workflow_dispatch: # Allows manual trigger of the workflow
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Specify your project's Node.js version
+          cache: 'yarn'       # Cache Yarn dependencies for faster builds
+
+      - name: Install dependencies with Yarn
+        run: yarn install
+
+      - name: Build the package with Yarn
+        run: yarn build
+
+      - name: Pack the package with npm
+        run: npm pack
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Only publish if it's not a pull request and the version has changed
+          if [ "${{ github.event_name }}" == "push" ]; then
+            npm publish
+          fi
