@@ -1,7 +1,3 @@
-Sure! Here's the complete **`README.md`** file, including instructions for both **npm** and **yarn**, detailed usage for **React**, **Next.js (Pages Router and App Router)**, and the **CSS** you provided.
-
----
-
 # react-next-theme
 
 `react-next-theme` is a simple and flexible theme switcher for React and Next.js applications, supporting light and dark modes. It provides a seamless solution for managing themes across your applications with automatic theme detection based on system preferences and local storage.
@@ -75,8 +71,8 @@ To prevent a white flash on page load, you need to inject a script that applies 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React App</title>
 
-    <!-- Insert the theme initialization style of the avobe style -->
-    <!-- <link rel="stylesheet" href="insert css file link"> -->
+    <!-- Link to CSS file-->
+    <link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
 
     <!-- Insert the theme initialization script -->
     <script>
