@@ -37,6 +37,7 @@ yarn add react-next-theme
 ### 1. Add Theme-Specific CSS Variables
 
 To ensure the theme is correctly applied to your application, include the following CSS in your global styles (`index.css` or `globals.css` depending on your setup):
+you can change color as you want.
 
 ```css
 :root {
@@ -75,8 +76,7 @@ To prevent a white flash on page load, you need to inject a script that applies 
     <title>React App</title>
 
     <!-- Insert the theme initialization style of the avobe style -->
-
-    <!-- <link rel="stylesheet" href="example of index.css"> -->
+    <!-- <link rel="stylesheet" href="insert css file link"> -->
 
     <!-- Insert the theme initialization script -->
     <script>
@@ -94,12 +94,12 @@ To prevent a white flash on page load, you need to inject a script that applies 
 </html>
 ```
 
-### 2. Use `ThemeProvider` in `src/index.js`
+### 2. Use `ThemeProvider` in `src/index.js` or `src/main.js`
 
 Wrap your app with the `ThemeProvider` to handle dynamic theme switching:
 
 ```js
-// src/index.js
+// src/index.js or src/main.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -114,6 +114,8 @@ ReactDOM.render(
 ```
 
 ### 3. Use the `useTheme` Hook in Your Components
+
+you can change the button or modify as your need
 
 ```js
 // src/App.js
